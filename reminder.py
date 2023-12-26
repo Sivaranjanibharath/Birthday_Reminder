@@ -5,7 +5,6 @@ import boto3
 import os
 
 birthday_reminder_sns_topic_arn = os.getenv("BIRTHDAY_SNS_ARN")
-# 'arn:aws:sns:us-east-2:900147746437:Reminder'
 
 # Initialize boto3 client using the default AWS credential profile (ie) you should run aws configure and provide
 # the aws secret and access key for the IAM users with sns publish permissions
