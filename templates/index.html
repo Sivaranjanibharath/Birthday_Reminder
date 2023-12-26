@@ -1,0 +1,19 @@
+<!-- templates/index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Birthday Reminder</title>
+</head>
+<body>
+    <h1>Birthday Reminder</h1>
+    <form action="/send_birthday_reminder" method="post">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required>
+        <label for="date">Birthdate:</label>
+        <input type="date" id="date" name="date" required>
+        <button type="submit">Set Reminder</button>
+    </form>
+</body>
+</html>
