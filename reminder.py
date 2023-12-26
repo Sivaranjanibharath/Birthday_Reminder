@@ -3,13 +3,12 @@ from datetime import date
 from typing import List, Dict
 import boto3
 import os
+"""
+This module has functions to fetch and publish eligible birthday reminders.
 
-birthday_reminder_sns_topic_arn = os.getenv("BIRTHDAY_SNS_ARN")
-
-# Initialize boto3 client using the default AWS credential profile (ie) you should run aws configure and provide
-# the aws secret and access key for the IAM users with sns publish permissions
-client = boto3.client('sns')
-
+Ideally this should have been invoked on schedule by a cron/OS scheduler but for 
+learning i have made it to be invoked from toplevel code environment entrypoint
+"""
 
 def fetch_eligible_reminders() -> List[Dict]:
     """
@@ -36,6 +35,12 @@ def send_birthday_reminder(reminders_list: List[Dict]):
     dob to compile a message for SNS topic that it then publishes.
     :return: none
     """
+    birthday_reminder_sns_topic_arn = os.getenv("BIRTHDAY_SNS_ARN")
+
+    # Initialize boto3 client using the default AWS credential profile (ie) you should run aws configure and provide
+    # the aws secret and access key for the IAM users with sns publish permissions
+    client = boto3.client('sns')
+
     for reminder in reminders_list:
         name = reminder["name"]
         dob = reminder["dob"]
